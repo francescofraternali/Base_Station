@@ -96,12 +96,17 @@ print "Let us Start!!"
 while(1):
 	for x in range(0,len(Sens_Splitted)):
 		
-		#subprocess.Popen("bash Find_New_BLE_Device.sh > dev_found.txt", shell=True)
-		#sleep(2)
-		#with open("dev_found.txt", 'r') as f:
-		#	data = f.read()
-		#for i in range(len(data)):
-		#	print(data[i])
+		subprocess.Popen("bash Find_New_BLE_Device.sh > dev_found.txt", shell=True)
+		sleep(2)
+		with open("dev_found.txt", 'r') as f:
+			data = f.read()
+			
+		if data is not None:
+			for i in range(len(data)):
+				print(data[i])
+		else:
+			print("killing Finder")
+			kill_search()
 		
 		ID = ID_List[x]
 		Name = str(Name_List[x])
