@@ -58,6 +58,9 @@ finder_time = 3 # time needed to avoid that multiple process are called and not 
 write_completed = 5 #after you write a data you avoid to call the sensor again. Put 1 for several sensors and 5 for 1 sensor
 tryals = 5 #number of trials it looks for a specific device. Each try is 0.5s. Put 10 for 1 sensor and 5 for multiple sensors
 
+def kill_search():
+	subprocess.Popen("killall Find_New_BLE_Device.sh 2?/dev/null, shell=True")
+
 def killer():
 	subprocess.Popen("killall Detector.sh 2>/dev/null", shell=True)
 	subprocess.Popen("killall gatttool 2>/dev/null" , shell=True)
@@ -92,6 +95,14 @@ def check():
 print "Let us Start!!"
 while(1):
 	for x in range(0,len(Sens_Splitted)):
+		
+		subprocess.Popen("bash Find_New_BLE_Device.sh > dev_found.txt", shell=True)
+		sleep(2)
+		with open("dev_found.txt", 'r') as f:
+			data = f.read()
+		for i in range(len(data):
+			print(data[i])
+		
 		ID = ID_List[x]
 		Name = str(Name_List[x])
 		File = str(File_List[x])
@@ -115,7 +126,7 @@ while(1):
 		killer()
 		sleep(finder_time)
 
-print "Fucking Over"
+print "It's Over"
 
 #sudo hciconfig hci0 reset
 
