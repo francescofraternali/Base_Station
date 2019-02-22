@@ -100,7 +100,7 @@ while(1):
 		sleep(2)
 		with open("dev_found.txt", 'r') as f:
 			data = f.read()
-		for i in range(len(data):
+		for i in range(len(data)):
 			print(data[i])
 		
 		ID = ID_List[x]
