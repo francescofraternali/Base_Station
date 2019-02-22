@@ -59,7 +59,7 @@ write_completed = 5 #after you write a data you avoid to call the sensor again. 
 tryals = 5 #number of trials it looks for a specific device. Each try is 0.5s. Put 10 for 1 sensor and 5 for multiple sensors
 
 def kill_search():
-	subprocess.Popen("killall Find_New_BLE_Device.sh 2?/dev/null, shell=True")
+	subprocess.Popen("killall Find_New_BLE_Device.sh 2>/dev/null", shell=True)
 
 def killer():
 	subprocess.Popen("killall Detector.sh 2>/dev/null", shell=True)
@@ -96,14 +96,14 @@ print "Let us Start!!"
 while(1):
 	for x in range(0,len(Sens_Splitted)):
 		
-		subprocess.Popen("bash Find_New_BLE_Device.sh > dev_found.txt", shell=True)
+		subprocess.Popen("bash Find_New_BLE_Device.sh > dev_found.txt &", shell=True)
 		sleep(2)
 		with open("dev_found.txt", 'r') as f:
 			data = f.read()
-			
-		if data is not None:
-			for i in range(len(data)):
-				print(data[i])
+                print("data is: " + data)
+
+                if data == "Set scan parameters failed: Input/output error":
+			print("wrong data")
 		else:
 			print("killing Finder")
 			kill_search()
