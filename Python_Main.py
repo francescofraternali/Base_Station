@@ -1,58 +1,43 @@
 import sys
 import subprocess
 from time import sleep
+import json
+import os
 
-Sensor_1 = "B0:B4:48:D2:F4:04"
-Sensor_2 = "B0:B4:48:C9:EA:83"
-Sensor_3 = "B0:B4:48:D2:2C:82"
-Sensor_4 = "A0:E6:F8:C1:C7:87"
-Sensor_5 = "A0:E6:F8:AF:32:86"
-Sensor_6 = "A0:E6:F8:AE:0F:85"
-Sensor_7 = "A0:E6:F8:C2:63:05"
-Sensor_8 = "24:71:89:07:86:06"
-Sensor_9 = "B0:B4:48:C9:DD:83"
-
-Pible_1 = "A0:E6:F8:CE:D9:87"
-Pible_2 = "A0:E6:F8:CE:E0:87"
-Pible_3 = "A0:E6:F8:CE:E8:03"
-
-Pible_1_v2 = "A0:E6:F8:BE:F1:06"
-
-Sensor_Dict = {
-'FFM' : "A0:E6:F8:BF:2E:87",
-'FF1' : "A0:E6:F8:BF:8E:84",
-'FF2' : "A0:E6:F8:BF:8F:80",
-'FF3' : "A0:E6:F8:BE:D3:80",
-'FF4' : "A0:E6:F8:BF:0F:05",
-'FF5' : "A0:E6:F8:BE:F3:06",
-'FF6' : "A0:E6:F8:BF:7B:04",
-'FF7' : "A0:E6:F8:BF:09:01",
-'FF8' : "A0:E6:F8:BE:E4:85",
-'FF9' : "A0:E6:F8:BE:FF:81",
-'FF10' : "A0:E6:F8:BE:F2:03",
-'FF11' : "A0:E6:F8:BE:D4:86",
-
-'FFS1': "A0:E6:F8:BE:D8:82",
-}
 
 ID_List =[]
 Name_List = []
 File_List = []
-f = open("ID.txt", "r")
-content = f.read()
+with open("ID.txt", "r") as f:
+    content = f.read()
 splitted = content.split(',')
-Sens_Splitted = splitted[0].split('-') #[Sensor_5, Sensor_1]
-File_Splitted = splitted[1].split('-') #[Sensor_5, Sensor_1]
-if len(Sens_Splitted) == len(File_Splitted):
-	print "File Ok"
+Name_Spl = splitted[0].split('-') #[Sensor_5, Sensor_1]
+File_Spl = splitted[1].split('-') #[Sensor_5, Sensor_1]
+if len(Name_Spl) == len(File_Spl):
+    print "File Ok"
 else:
-	print "Error: Check ID File"
-	quit()
+    print "Error: Check ID File"
+    quit()
 
-for i in range(len(Sens_Splitted)):
-	ID_List.append(Sensor_Dict[Sens_Splitted[i]])
-	Name_List.append(str(Sens_Splitted[i])) #["Sensor_5", "Sensor_1"]
-	File_List.append(str(File_Splitted[i])) #["2142_Middle_Battery.txt", "2142_Middle_Pible.txt"]
+dict_dev = {}
+
+with open('pible_dev_list.txt', 'r') as inf:
+    for data in inf:
+        line = data.strip().split(' ')
+        dict_dev[line[0]] = line[1]
+
+for i in range(len(File_Spl)):
+        for key, val in dict_dev.items():
+            if Name_Spl[i] == val:
+                ID_List.append(key)
+                break
+	Name_List.append(str(Name_Spl[i])) #["Sensor_5", "Sensor_1"]
+	File_List.append(str(File_Spl[i])) #["2142_Middle_Battery.txt", "2142_Middle_Pible.txt"]
+
+#print(ID_List)
+#print(Name_List)
+#print(File_List)
+#quit()
 
 finder_time = 3 # time needed to avoid that multiple process are called and not completly killed. Put 3 for one sensor and 1 for several sensors
 write_completed = 5 #after you write a data you avoid to call the sensor again. Put 1 for several sensors and 5 for 1 sensor
@@ -93,26 +78,58 @@ def check():
 		sleep(0.5)
 
 print "Let us Start!!"
-while(1):
-	for x in range(0,len(Sens_Splitted)):
-		
-		subprocess.Popen("bash Find_New_BLE_Device.sh > dev_found.txt &", shell=True)
-		sleep(2)
-		with open("dev_found.txt", 'r') as f:
-			data = f.read()
-                print("data is: " + data)
 
-                if data == "Set scan parameters failed: Input/output error":
-			print("wrong data")
-		else:
-			print("killing Finder")
-			kill_search()
+#Reset BLE drivers
+#subprocess.Popen("sudo hciconfig hci0 reset &", shell=True)
+#print(json.dumps(dict_dev, indent=2, sort_keys=True))
+
+while(1):
+    #print('here')	
+    Name = ''
+    File = ''
+    #subprocess.Popen("bash Find_New_BLE_Device.sh > dev_found.txt", shell=True)
+    subprocess.Popen('sudo blescan -t 3 > dev_found.txt', shell=True)
+    sleep(3.5)
+    if os.stat('dev_found.txt').st_size < 2:
+        print('empty')
+        sleep(1)
+    else:
+        with open("dev_found.txt", 'r') as f:
+            for line in f:
+                line = line.strip()
+		#print(len(line))
+                splitted = line.split(' ')
+                try:
+                    if splitted[2][5:22] in ID_List:
+                        print('trovato')
+                        wait = 0
+                        with open('wait.txt', 'w'):
+                            f.write('0')
+                        ID = splitted[2][5:22]
+                        for i in range(len(ID_List)):
+                            if ID == ID_List[i]:
+                                Name = Name_List[i]
+                                File = File_List[i]
+
+                        with open('action.txt', 'r') as f:
+                            first_line = f.readline()
+
+                        Action = first_line[:1]
+                        subprocess.Popen('bash get_data_from_device.sh ' +Name+' '+ID+' '+File+' '+Action+' &', shell=True)
+                        check()
+                        killer()
+                        sleep(3)
+                except:
+                    continue
+                    
+    sleep(0.5)
+    ''' 	    
 		
-		ID = ID_List[x]
-		Name = str(Name_List[x])
-		File = str(File_List[x])
-		wait = 0
-		f = open('wait.txt','w')
+    ID = ID_List[x]
+    Name = str(Name_List[x])
+    File = str(File_List[x])
+    wait = 0
+    		f = open('wait.txt','w')
 		f.write('0')
 		f.close()
 		if x == 0:
@@ -129,7 +146,7 @@ while(1):
 		#sleep(finder_time)
 		check()
 		killer()
-		sleep(finder_time)
+    '''
 
 print "It's Over"
 
