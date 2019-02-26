@@ -111,58 +111,63 @@ reqmov()
 
 Occupancy()
 {
-        empty="";
-        ready="";
-        disaster="connect: Device or resource busy (16)";
-        echo "" > error.txt
-        ready="$(gatttool -b $ID --char-write-req -a 0x0024 -n 00 2> error.txt)" #disables (0x24)
-        line=$(head -n 1 error.txt)
+        #empty="";
+        #ready="";
+        #disaster="connect: Device or resource busy (16)";
+        #echo "" > error.txt
+        #ready="$(gatttool -b $ID --char-write-req -a 0x0024 -n 00 2> error.txt)" #disables (0x24)
+        #line=$(head -n 1 error.txt)
 
-        if [ "$line" = "$disaster" ]; then
-                sudo /etc/init.d/bluetooth restart
-                sleep 5
-        fi
+        #if [ "$line" = "$disaster" ]; then
+        #        sudo /etc/init.d/bluetooth restart
+        #        sleep 5
+        #fi
 
-        if [ "$ready" != "$empty" ]; then
+        #if [ "$ready" != "$empty" ]; then
 
-                echo "1" > wait.txt
-								if [ $Action -eq 2 ]; then
-											reqfaketemp
-											sleep 0.5
-											#echo "perf +1"
-								fi
+        
+    	#       echo "1" > wait.txt
+	
+	reqfaketemp
+	exit
 
-								if [ $Action -eq 0 ]; then
-											reqfakehum
-											sleep 0.5
-											#echo "perf -1"
-								fi
+	if [[ $Action == 2 ]]
+       	then
+		reqfaketemp
+		sleep 0.5
+		#echo "perf +1"
+	elif [[ $Action == 0 ]]
+       	then
+		reqfakehum
+		sleep 0.5
+		#echo "perf -1"
+	
+	elif [[ $Action -eq 3 ]]
+       	then
+		reqfaketemp
+		sleep 0.5
+		reqfakehum
+		sleep 0.5
+		#echo "perf -1"
+  	fi
+	echo "1" > wait.txt
+	#reqfakehum 	# performance -1
+	#reqfaketemp	# performance +1
+	reqbar		# performance = 0. This has always to be there
 
-								if [ $Action -eq 3 ]; then
-											reqfaketemp
-											sleep 0.5
-											reqfakehum
-											sleep 0.5
-											#echo "perf -1"
-  							fi
-
-								#reqfakehum 	# performance -1
-								#reqfaketemp	# performance +1
-								reqbar		# performance = 0. This has always to be there
-
-    						#Write Data
-    						dt=$(date '+%m/%d/%y %H:%M:%S');
-    						echo "${dt}| ${Name} |${celsius} degC|${lux} lux| ${bar} |${raw_hum_data}|${raw_bar_data}" # prints data in celsius a$
-    						printf "\n${dt}|${Name}|${celsius}|${lux}|${bar}|${raw_hum_data}|${raw_bar_data}" >> $File #prints $
-    						echo "2" > wait.txt
-								sleep 10
-				fi
+    	#Write Data
+    	dt=$(date '+%m/%d/%y %H:%M:%S');
+    	echo "${dt}| ${Name} |${celsius} degC|${lux} lux| ${bar} |${raw_hum_data}|${raw_bar_data}" # prints data in celsius a$
+    	printf "\n${dt}|${Name}|${celsius}|${lux}|${bar}|${raw_hum_data}|${raw_bar_data}" >> $File #prints $
+    	echo "2" > wait.txt
+	#sleep 2
 }
 
 Name=$1
 ID=$2
 File=$3
 Action=$4
+
 
 Occupancy
 

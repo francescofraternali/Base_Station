@@ -1,0 +1,64 @@
+
+02/25/19 12:52:32|FFWhite|||||
+02/25/19 12:56:16|FFWhite|||1|102|0|0|268|perf-batt-PIR-reed-light||00 01 66 43 00 00 
+02/25/19 12:59:12|FFWhite|||1|102|0|0|256|perf-batt-PIR-reed-light||00 01 66 40 00 00 
+02/25/19 13:00:41|FFWhite|||1|102|0|0|248|perf-batt-PIR-reed-light||00 01 66 3e 00 00 
+02/25/19 13:00:50|FFWhite|||1|102|0|0|248|perf-batt-PIR-reed-light||00 01 66 3e 00 00 
+02/25/19 14:12:57|FFWhite|||1|102|0|0|256|perf-batt-PIR-reed-light||00 01 66 40 00 00 
+02/25/19 14:13:34|FFWhite|||1|102|0|0|264|perf-batt-PIR-reed-light||00 01 66 42 00 00 
+02/25/19 14:15:28|FFWhite|||1|102|0|0|236|perf-batt-PIR-reed-light||00 01 66 3b 00 00 
+02/25/19 14:19:09|FFWhite|||1|102|0|0|236|perf-batt-PIR-reed-light||00 01 66 3b 00 00 
+02/25/19 14:22:49|FFWhite|||1|102|0|0|244|perf-batt-PIR-reed-light||00 01 66 3d 00 00 
+02/25/19 14:24:09|FFWhite|||1|102|1|0|244|perf-batt-PIR-reed-light||00 01 66 3d 00 01 
+02/25/19 14:31:37|FFWhite|||||
+02/25/19 14:33:00|FFWhite|||3|102|0|0|240|perf-batt-PIR-reed-light||00 03 66 3c 00 00 
+02/25/19 14:36:16|FFWhite|||3|102|0|0|248|perf-batt-PIR-reed-light||00 03 66 3e 00 00 
+02/25/19 15:07:56|FFWhite|||3|102|0|0|204|perf-batt-PIR-reed-light||00 03 66 33 00 00 
+02/25/19 15:08:12|FFWhite|||3|102|0|0|196|perf-batt-PIR-reed-light||00 03 66 31 00 00 
+02/25/19 15:09:23|FFWhite|||3|102|0|0|200|perf-batt-PIR-reed-light||00 03 66 32 00 00 
+02/25/19 15:10:20|FFWhite|||||
+02/25/19 15:12:34|FFWhite|||0|0|0|0|0|perf-batt-PIR-reed-light||00 00 00 00 00 00 
+02/25/19 15:13:08|FFWhite|||||
+02/25/19 15:13:30|FFWhite|||3|101|0|0|184|perf-batt-PIR-reed-light||00 03 65 2e 00 00 
+02/25/19 15:16:59|FFWhite|||3|101|0|0|200|perf-batt-PIR-reed-light||00 03 65 32 00 00 
+02/25/19 15:17:37|FFWhite|||1|101|1|0|132|perf-batt-PIR-reed-light||00 01 65 21 00 01 
+02/25/19 15:18:05|FFWhite|||||
+02/25/19 15:18:28|FFWhite|||3|101|0|0|200|perf-batt-PIR-reed-light||00 03 65 32 00 00 
+02/25/19 15:32:20|FFWhite|||||
+02/25/19 15:32:22|FFWhite|||3|101|0|0|240|perf-batt-PIR-reed-light||00 03 65 3c 00 00 
+02/25/19 15:32:32|FFWhite|||3|101|0|0|240|perf-batt-PIR-reed-light||00 03 65 3c 00 00 
+02/25/19 15:32:44|FFWhite|||1|101|1|0|16|perf-batt-PIR-reed-light||00 01 65 04 00 01 
+02/25/19 16:02:23|FFWhite|||3|101|0|0|216|perf-batt-PIR-reed-light||00 03 65 36 00 00 
+02/25/19 16:02:58|FFWhite|||0|0|0|0|0|perf-batt-PIR-reed-light||00 00 00 00 00 00 
+02/25/19 16:03:06|FFWhite|||1|101|1|0|200|perf-batt-PIR-reed-light||00 01 65 32 00 01 
+02/25/19 16:08:55|FFWhite|||3|101|0|0|212|perf-batt-PIR-reed-light||00 03 65 35 00 00 
+02/25/19 16:09:04|FFWhite|||3|101|0|0|212|perf-batt-PIR-reed-light||00 03 65 35 00 00 
+02/25/19 16:10:43|FFWhite|||1|100|1|0|228|perf-batt-PIR-reed-light||00 01 64 39 00 01 
+02/25/19 16:12:20|FFWhite|||0|0|0|0|0|perf-batt-PIR-reed-light||00 00 00 00 00 00 
+02/25/19 16:12:22|FFWhite|||3|100|0|0|220|perf-batt-PIR-reed-light||00 03 64 37 00 00 
+02/25/19 16:14:41|FFWhite|||||
+02/25/19 16:14:45|FFWhite|||3|100|0|0|212|perf-batt-PIR-reed-light||00 03 64 35 00 00 
+02/25/19 16:14:53|FFWhite|||3|100|0|0|212|perf-batt-PIR-reed-light||00 03 64 35 00 00 
+02/25/19 16:16:02|FFWhite|||3|100|0|0|216|perf-batt-PIR-reed-light||00 03 64 36 00 00 
+02/25/19 16:16:10|FFWhite|||3|100|0|0|216|perf-batt-PIR-reed-light||00 03 64 36 00 00 
+02/25/19 16:18:05|FFWhite|||0|0|0|0|0|perf-batt-PIR-reed-light||00 00 00 00 00 00 
+02/25/19 16:18:16|FFWhite|||0|0|0|0|0|perf-batt-PIR-reed-light||00 00 00 00 00 00 
+02/25/19 16:20:01|FFWhite|||3|100|1|0|204|perf-batt-PIR-reed-light||00 03 64 33 00 01 
+02/25/19 16:20:34|FFWhite|||||
+02/25/19 16:20:49|FFWhite|||0|0|0|0|0|perf-batt-PIR-reed-light||00 00 00 00 00 00 
+02/25/19 16:21:39|FFWhite|||||
+02/25/19 16:22:54|FFWhite|||3|100|0|0|204|perf-batt-PIR-reed-light||00 03 64 33 00 00 
+02/25/19 16:23:51|FFWhite|||||
+02/25/19 16:23:51|FFWhite|||0|0|0|0|0|perf-batt-PIR-reed-light||00 00 00 00 00 00 
+02/25/19 16:24:03|FFWhite|||3|100|0|0|220|perf-batt-PIR-reed-light||00 03 64 37 00 00 
+02/25/19 16:24:24|FFWhite|||1|100|1|0|220|perf-batt-PIR-reed-light||00 01 64 37 00 01 
+02/25/19 16:24:49|FFWhite|||1|100|1|0|220|perf-batt-PIR-reed-light||00 01 64 37 00 01 
+02/25/19 16:25:18|FFWhite|||0|0|0|0|0|perf-batt-PIR-reed-light||00 00 00 00 00 00 
+02/25/19 16:25:30|FFWhite|||1|100|1|0|220|perf-batt-PIR-reed-light||00 01 64 37 00 01 
+02/26/19 10:22:23|FFWhite|||0|0|0|0|0|perf-batt-PIR-reed-light||00 00 00 00 00 00 
+02/26/19 10:42:17|FFWhite|||0|0|0|0|0|perf-batt-PIR-reed-light||00 00 00 00 00 00 
+02/26/19 10:42:47|FFWhite|||||
+02/26/19 10:43:07|FFWhite|||3|101|0|0|192|perf-batt-PIR-reed-light||00 03 65 30 00 00 
+02/26/19 10:43:19|FFWhite|||3|101|0|0|192|perf-batt-PIR-reed-light||00 03 65 30 00 00 
+02/26/19 10:44:10|FFWhite|||0|0|0|0|0|perf-batt-PIR-reed-light||00 00 00 00 00 00 
+02/26/19 10:44:23|FFWhite|||6|100|1|0|520|perf-batt-PIR-reed-light||00 06 64 82 00 01 
