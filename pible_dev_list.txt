@@ -23,5 +23,6 @@ a0:e6:f8:be:e4:85 FF8
 a0:e6:f8:be:ff:81 FF9
 a0:e6:f8:be:f2:03 FF10
 a0:e6:f8:be:d4:86 FF11
+a0:e6:f8:be:e0:86 FF17
 a0:e6:f8:be:d8:82 FFS1
 a0:e6:f8:bf:13:81 FFWhite
