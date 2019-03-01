@@ -127,9 +127,6 @@ Occupancy()
 
         
     	#       echo "1" > wait.txt
-	
-	reqfaketemp
-	exit
 
 	if [[ $Action == 2 ]]
        	then

@@ -39,8 +39,8 @@ for i in range(len(File_Spl)):
 #print(File_List)
 #quit()
 
-finder_time = 3 # time needed to avoid that multiple process are called and not completly killed. Put 3 for one sensor and 1 for several sensors
-write_completed = 0.5 #after you write a data you avoid to call the sensor again. 
+#finder_time = 3 # time needed to avoid that multiple process are called and not completly killed. Put 3 for one sensor and 1 for several sensors
+#write_completed = 0.5 #after you write a data you avoid to call the sensor again. 
 tryals = 5 #number of trials it looks for a specific device. Each try is 0.5s. 
 
 def kill_search():
@@ -58,7 +58,7 @@ def check():
         #print(first)
         if first == '2': # if it reads 2 that means that Detector.sh has already written everything
 	    #print "Sleep 1"
-	    sleep(write_completed)
+	    #sleep(write_completed)
 	    return
         if first == '1': #if it reads 1 it we five him other 10 extra seconds to finish to write the data
             for i in range(0,10):
@@ -68,7 +68,7 @@ def check():
 			
 		first = first_line[:1]
 		if first == '2':
-		    sleep(write_completed)
+		    #sleep(write_completed)
 		    return
 	        sleep(0.5)
 	sleep(0.5)
@@ -87,12 +87,13 @@ def get_raw_data(ID):
         first_line = f.readline()
 
     Action = first_line[:1]
+    #print("bash get_data_from_device.sh "+Name+" "+ID+" "+File+" "+Action) 
     subprocess.Popen("bash get_data_from_device.sh "+Name+" "+ID+" "+File+" "+Action+" &", shell=True)
    
     #subprocess.Popen('bash get_data_from_device.sh ' +Name+' '+ID+' '+File+' '+Action+' &', shell=True)
-    print('checking')
+    #print('checking')
     check()
-    print('checking over')
+    #print('checking over')
     killer()
     sleep(0.5)
                     
@@ -110,7 +111,8 @@ while(True):
     #print('here')	
     Name = ''
     File = ''
-    print("scanning")
+    #print("scanning")
+    os.remove('dev_found.txt')
     #subprocess.Popen("bash Find_New_BLE_Device.sh > dev_found.txt", shell=True)
     subprocess.Popen('sudo blescan -t 3 > dev_found.txt', shell=True)
     sleep(3.5)
@@ -142,20 +144,17 @@ while(True):
         #avoid.append(ID_List[-1])
         #print('avoiding this ID')
         
-    if len(avoid) > 0 or len(found) > 0:
-        for i in range(len(ID_List)):
-            if ID_List[-1] in found:
-                avoid.append(ID_List[-1])
-                print('avoiding last ID')
-                break
-            else:
-                print('remove avoiding last ID')
-                try:
-                    avoid.remove(ID_List[-1])
-                except:
-                    continue
-                break
+    if len(avoid) > 0:
+        #print('remove avoiding last ID')
+        avoid.remove(avoid[-1])
         
+    if len(found) > 0:
+        #for i in range(len(ID_List)):
+        avoid.append(found[-1])
+        avoid.append(found[-1])
+        #print('avoiding last ID')
+    
+    
     sleep(0.5)
     ''' 	    
 		
