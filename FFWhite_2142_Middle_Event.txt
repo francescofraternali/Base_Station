@@ -79,3 +79,20 @@
 03/04/19 10:28:38|FFWhite|||6|101|1|0|632|perf-batt-PIR-reed-light||00 06 65 9e 00 01 
 03/04/19 10:29:07|FFWhite|||6|101|1|0|632|perf-batt-PIR-reed-light||00 06 65 9e 00 01 
 03/04/19 10:29:56|FFWhite|||6|101|1|0|636|perf-batt-PIR-reed-light||00 06 65 9f 00 01 
+03/04/19 10:44:10|FFWhite|||6|102|1|0|624|perf-batt-PIR-reed-light||00 06 66 9c 00 01 
+03/04/19 10:48:18|FFWhite|||6|102|1|0|182|perf-batt-PIR-reed-light||00 06 66 b6 00 01 
+03/04/19 10:48:45|FFWhite|||6|102|1|0|197|perf-batt-PIR-reed-light||00 06 66 c5 00 01 
+03/04/19 10:49:13|FFWhite|||6|102|1|0|185|perf-batt-PIR-reed-light||00 06 66 b9 00 01 
+03/04/19 10:49:38|FFWhite|||6|102|1|0|194|perf-batt-PIR-reed-light||00 06 66 c2 00 01 
+03/04/19 10:50:06|FFWhite|||6|102|1|0|192|perf-batt-PIR-reed-light||00 06 66 c0 00 01 
+03/04/19 10:50:42|FFWhite|||6|102|1|0|190|perf-batt-PIR-reed-light||00 06 66 be 00 01 
+03/04/19 10:51:07|FFWhite|||6|102|1|0|202|perf-batt-PIR-reed-light||00 06 66 ca 00 01 
+03/04/19 10:53:22|FFWhite|||6|102|1|0|201|perf-batt-PIR-reed-light||00 06 66 c9 00 01 
+03/04/19 10:56:52|FFWhite|||||
+03/04/19 11:53:45|FFWhite|||6|102|0|0|250|perf-batt-PIR-reed-light||00 06 66 fa 00 00 
+03/04/19 12:08:55|FFWhite|||6|102|1|0|177|perf-batt-PIR-reed-light||00 06 66 b1 00 01 
+03/04/19 12:13:14|FFWhite|||6|102|1|0|208|perf-batt-PIR-reed-light||00 06 66 d0 00 01 
+03/04/19 12:13:44|FFWhite|||6|102|1|0|224|perf-batt-PIR-reed-light||00 06 66 e0 00 01 
+03/04/19 12:14:08|FFWhite|||6|102|1|0|224|perf-batt-PIR-reed-light||00 06 66 e0 00 01 
+03/04/19 12:14:36|FFWhite|||6|102|1|0|222|perf-batt-PIR-reed-light||00 06 66 de 00 01 
+03/04/19 12:15:05|FFWhite|||6|102|1|0|221|perf-batt-PIR-reed-light||00 06 66 dd 00 01 
