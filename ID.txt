@@ -1,1 +1,2 @@
-FFWhite-FF17,2142_Pible_Event.txt-FF17_2142_Event.txt,none
+FFWhite,FFWhite_2142_Middle_Event.txt,3
+FF17,FF17_2142_Window_Event.txt,1

@@ -8,12 +8,17 @@ import os
 ID_List =[]
 Name_List = []
 File_List = []
+
+Name_spl = []
+File_spl = []
 with open("ID.txt", "r") as f:
-    content = f.read()
-splitted = content.split(',')
-Name_Spl = splitted[0].split('-') #[Sensor_5, Sensor_1]
-File_Spl = splitted[1].split('-') #[Sensor_5, Sensor_1]
-if len(Name_Spl) == len(File_Spl):
+    for line in f:
+        splitted = line.split(',')
+        print(splitted)
+        Name_spl.append(splitted[0]) 
+        File_spl.append(splitted[1]) 
+#print(Name_spl, File_spl)
+if len(Name_spl) == len(File_spl):
     print "File Ok"
 else:
     print "Error: Check ID File"
@@ -26,13 +31,13 @@ with open('pible_dev_list.txt', 'r') as inf:
         line = data.strip().split(' ')
         dict_dev[line[0]] = line[1]
 
-for i in range(len(File_Spl)):
+for i in range(len(File_spl)):
         for key, val in dict_dev.items():
-            if Name_Spl[i] == val:
+            if Name_spl[i] == val:
                 ID_List.append(key)
                 break
-	Name_List.append(str(Name_Spl[i])) #["Sensor_5", "Sensor_1"]
-	File_List.append(str(File_Spl[i])) #["2142_Middle_Battery.txt", "2142_Middle_Pible.txt"]
+	Name_List.append(str(Name_spl[i])) #["Sensor_5", "Sensor_1"]
+	File_List.append(str(File_spl[i])) #["2142_Middle_Battery.txt", "2142_Middle_Pible.txt"]
 
 #print(ID_List)
 #print(Name_List)
@@ -82,11 +87,16 @@ def get_raw_data(ID):
         if ID == ID_List[i]:
             Name = Name_List[i]
             File = File_List[i]
+            break
 
-    with open('action.txt', 'r') as f:
-        first_line = f.readline()
+    with open('ID.txt', 'r') as f:
+        for line in f:
+            line = line.strip()
+            splt = line.split(',')
+            if Name == splt[0]:
+                #print(splt[0], splt[2])
+                Action = splt[2]
 
-    Action = first_line[:1]
     #print("bash get_data_from_device.sh "+Name+" "+ID+" "+File+" "+Action) 
     subprocess.Popen("bash get_data_from_device.sh "+Name+" "+ID+" "+File+" "+Action+" &", shell=True)
    

@@ -1,2 +1,0 @@
-FFM,1
-FFWhite,1
