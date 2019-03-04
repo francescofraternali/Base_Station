@@ -37,7 +37,7 @@ for i in range(len(File_spl)):
                 ID_List.append(key)
                 break
 	Name_List.append(str(Name_spl[i])) #["Sensor_5", "Sensor_1"]
-	File_List.append(str(File_spl[i])) #["2142_Middle_Battery.txt", "2142_Middle_Pible.txt"]
+	File_List.append('../Data/' + str(File_spl[i])) #["2142_Middle_Battery.txt", "2142_Middle_Pible.txt"]
 
 #print(ID_List)
 #print(Name_List)
