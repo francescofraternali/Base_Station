@@ -90,12 +90,18 @@ def get_raw_data(ID):
             break
 
     with open('ID.txt', 'r') as f:
+        Action = '-1'
         for line in f:
             line = line.strip()
             splt = line.split(',')
             if Name == splt[0]:
                 #print(splt[0], splt[2])
                 Action = splt[2]
+                break
+        
+        if Action == '-1':
+            print("Pay Attention: Name and Action not found")
+            Action = '0'
 
     #print("bash get_data_from_device.sh "+Name+" "+ID+" "+File+" "+Action) 
     subprocess.Popen("bash get_data_from_device.sh "+Name+" "+ID+" "+File+" "+Action+" &", shell=True)

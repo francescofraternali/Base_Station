@@ -74,3 +74,8 @@
 03/04/19 08:34:52|FFWhite|||6|99|1|0|636|perf-batt-PIR-reed-light||00 06 63 9f 00 01 
 03/04/19 09:09:57|FFWhite|||6|100|1|0|616|perf-batt-PIR-reed-light||00 06 64 9a 00 01 
 03/04/19 09:50:26|FFWhite|||6|101|1|0|672|perf-batt-PIR-reed-light||00 06 65 a8 00 01 
+03/04/19 10:23:47|FFWhite|||6|101|1|0|644|perf-batt-PIR-reed-light||00 06 65 a1 00 01 
+03/04/19 10:28:11|FFWhite|||6|102|1|0|632|perf-batt-PIR-reed-light||00 06 66 9e 00 01 
+03/04/19 10:28:38|FFWhite|||6|101|1|0|632|perf-batt-PIR-reed-light||00 06 65 9e 00 01 
+03/04/19 10:29:07|FFWhite|||6|101|1|0|632|perf-batt-PIR-reed-light||00 06 65 9e 00 01 
+03/04/19 10:29:56|FFWhite|||6|101|1|0|636|perf-batt-PIR-reed-light||00 06 65 9f 00 01 
