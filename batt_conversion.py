@@ -12,7 +12,8 @@ def main():
 	light_2 = int(raw_temp_bytes[3], 16)
 	light_1 = int(raw_temp_bytes[4], 16)
 	light = (light_1 << 8) | (light_2);
-	light = light*4
+	#light = light*4  # if you use an external case
+	light = light
 	print str(performance)+"|"+str(batt_percent)+"|"+str(PIR_Out)+"|"+str(reed)+"|"+str(light)+"|perf-batt-PIR-reed-light"
 	
 main()
