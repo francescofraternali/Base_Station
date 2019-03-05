@@ -92,11 +92,13 @@ reqbar()
 	sudo gatttool -b $ID --char-write-req -a 0x34 -n 01 > useless.txt #initiates (0x44)
 	sleep 0.3
 	barOutput="$(sudo gatttool -b $ID --char-read -a 0x31)" #collects 0x41)
-	sleep 0.3
+	sleep 1
 	sudo gatttool -b $ID --char-write-req -a 0x34 -n 00 > useless.txt #disables (0x44)
 
 	# Manipulating data
 	outputPrefix="Characteristic value/descriptor: "
+	echo $barOutput
+	echo $outputPrefix
 	raw_bar_data=${barOutput#$outputPrefix} #Removes prefix of luxOutput
 	bar="$(python batt_conversion.py "${raw_bar_data}")" # Converts raw_bar_data to celsius
 }

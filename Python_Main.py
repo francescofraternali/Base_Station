@@ -19,7 +19,7 @@ with open("ID.txt", "r") as f:
         File_spl.append(splitted[1]) 
 #print(Name_spl, File_spl)
 if len(Name_spl) == len(File_spl):
-    print "File Ok"
+    print "File Ok Ok"
 else:
     print "Error: Check ID File"
     quit()
@@ -45,7 +45,7 @@ for i in range(len(File_spl)):
 #quit()
 
 #finder_time = 3 # time needed to avoid that multiple process are called and not completly killed. Put 3 for one sensor and 1 for several sensors
-#write_completed = 0.5 #after you write a data you avoid to call the sensor again. 
+write_completed = 1 #after you write a data you avoid to call the sensor again. 
 tryals = 5 #number of trials it looks for a specific device. Each try is 0.5s. 
 
 def kill_search():
@@ -63,7 +63,7 @@ def check():
         #print(first)
         if first == '2': # if it reads 2 that means that Detector.sh has already written everything
 	    #print "Sleep 1"
-	    #sleep(write_completed)
+	    sleep(write_completed)
 	    return
         if first == '1': #if it reads 1 it we five him other 10 extra seconds to finish to write the data
             for i in range(0,10):
@@ -73,7 +73,7 @@ def check():
 			
 		first = first_line[:1]
 		if first == '2':
-		    #sleep(write_completed)
+		    sleep(write_completed)
 		    return
 	        sleep(0.5)
 	sleep(0.5)
@@ -170,8 +170,8 @@ while(True):
         avoid.append(found[-1])
         #print('avoiding last ID')
     
-    
-    sleep(0.5)
+    subprocess.Popen('sudo hciconfig hci0 reset &', shell=True)
+    sleep(1)
     ''' 	    
 		
     ID = ID_List[x]

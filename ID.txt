@@ -1,2 +1,6 @@
-FFWhite,FFWhite_2142_Middle_Event.txt,0
-FF17,FF17_2142_Window_Event.txt,1
+FFWhite,FFWhite_2142_Ceiling_Event_Batt.txt,0
+FF17,FF17_2142_Ceiling_Event_RL.txt,1
+FFBlack,FFBlack_2142_Middle_Event_Batt.txt,0
+FF18,FF18_2142_Middle_Event_RL.txt,3
+B1,B1_2142_Window_Event_Batt.txt,0
+FF19,FF19_Window_Event_RL.txt,3
