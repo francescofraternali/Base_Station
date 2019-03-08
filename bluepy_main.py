@@ -169,18 +169,18 @@ while(True):
                         #print('trovato')
                         found.append(ID)
                         Action, Name, File = get_action_name(ID)
-                        File = 'blupytest.txt'
+                        #File = 'blupytest.txt'
                         #print(Action)
                         #print('sensortag -T -H -B ' + ID + ' -n 1 > ' + Name + ' &')
 			t = time.strftime('%m/%d/%y %H:%M:%S')
-			with open(File, 'a') as f:
-                            f.write('\n' + str(t) + '|' + Name + '|||')
+			#with open(File, 'a') as f:
+                        #    f.write('\n' + str(t) + '|' + Name + '|||')
 
-			print(str(t) + '|' + Name + '|||')
+			#print(str(t) + '|' + Name + '|||')
                         #print('here')
                         if Action == '3':
                             #print('hereh1')
-                            subprocess.Popen('sensortag -T -H -B ' + ID + ' -n 1 >> ' + File + ' &', shell=True)
+                            subprocess.Popen('sensortag -Na ' + Name + ' -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
                             #print('here')
                             #output = ps.stdout.read()
                             #ps.stdout.close()
@@ -190,39 +190,44 @@ while(True):
                             #pid_ = proc.pid
                             #print(pid_)
                         elif Action == '2':
-                            subprocess.Popen('sensortag -T -B ' + ID + ' -n 1 >> ' + File + ' &', shell=True)
+                            subprocess.Popen('sensortag -Na ' + Name + ' -T -H -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
                         elif Action == '0':
-                            subprocess.Popen('sensortag -H -B ' + ID + ' -n 1 >> ' + File + ' &', shell=True)
+                            subprocess.Popen('sensortag -Na ' + Name + ' -H -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
                         else:
-                            subprocess.Popen('sensortag -B ' + ID + ' -n 1 >> ' + File + ' &', shell=True)
+                            subprocess.Popen('sensortag -Na ' + Name + ' -T -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
                     	#print('got here')
 			#elif ID in ID_List and ID in avoid:
                     #    avoid.remove(ID)
 
-            #if len(found) > 0:
+        #if len(found) > 0:
             
             #while(True):
             #        print(pid_)
             #        quit()
-                #print('killing')
+        	#print('found')
                 #sleep(10)
+		#print('killed')
                 #subprocess.Popen('sudo killall sensortag', shell=True)
 
     #print("found", found)
-    #print("avoid", avoid)
+    
     if len(avoid) > 0:
         #print('remove avoiding last ID')
         for ID in ID_List:
             if ID in avoid: 
                 avoid.remove(ID)
-                print('removing ', ID)
-     
+                #print('removing ', ID)
+    
+    #if len(avoid) == 0:
+	#print('empty')
+ 
     if len(found) > 0:   # There are some device that needs to be downloaded
         for ID in found:
             avoid.append(ID)
             avoid.append(ID)
             avoid.append(ID)
-            print('avoiding ', ID)
+	    #avoid.append(ID)
+            #print('avoiding ', ID)
         
        
     #if len(found) > 0:
