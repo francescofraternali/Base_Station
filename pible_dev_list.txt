@@ -11,8 +11,8 @@ a0:e6:f8:ce:d9:87 Pible_v1_1
 a0:e6:f8:ce:e0:87 Pible_v1_2
 a0:e6:f8:ce:e8:03 Pible_v1_3
 a0:e6:f8:be:f1:06 Pible_v2_1
-a0:e6:f8:bf:37:83 B1
-a0:e6:f8:bf:2d:07 B2
+a0:e6:f8:bf:1a:03 B1
+a0:e6:f8:be:e3:85 B2
 a0:e6:f8:bf:2e:87 FFM
 a0:e6:f8:bf:8e:84 FF1
 a0:e6:f8:bf:8f:80 FF2
