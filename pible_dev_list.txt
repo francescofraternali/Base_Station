@@ -15,6 +15,9 @@ a0:e6:f8:bf:1a:03 B1
 a0:e6:f8:be:e3:85 B2
 a0:e6:f8:bf:73:85 B3
 a0:e6:f8:bf:1b:03 B4
+a0:e6:f8:bf:80:84 B5
+a0:e6:f8:be:d8:82 B6
+a0:e6:f8:be:ef:06 B7
 a0:e6:f8:bf:2e:87 FFM
 a0:e6:f8:bf:8e:84 FF1
 a0:e6:f8:bf:8f:80 FF2
@@ -30,10 +33,14 @@ a0:e6:f8:be:d4:86 FF11
 a0:e6:f8:be:e0:86 FF17
 a0:e6:f8:bf:15:85 FF18
 a0:e6:f8:be:f5:01 FF19
-a0:e6:f8:be:d8:82 FFS1
 a0:e6:f8:bf:13:81 FFWhite
 a0:e6:f8:be:d5:82 FF50
 a0:e6:f8:be:d7:82 FF51
 a0:e6:f8:be:e7:83 FF52
 a0:e6:f8:bf:03:84 FF53
 a0:e6:f8:be:d6:80 FF54
+a0:e6:f8:be:f9:02 FF55
+a0:e6:f8:bf:68:80 FF56
+a0:e6:f8:be:f7:80 FF57
+a0:e6:f8:bf:06:81 FF58
+a0:e6:f8:be:e5:80 FF59
