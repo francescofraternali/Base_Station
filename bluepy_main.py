@@ -13,7 +13,7 @@ File_List = []
 
 Name_spl = []
 File_spl = []
-with open("ID.txt", "r") as f:
+with open("../ID/ID.txt", "r") as f:
     for line in f:
         splitted = line.split(',')
         print(splitted)
@@ -122,7 +122,7 @@ def get_action_name(ID):
             File = File_List[i]
             break
 
-    with open('ID.txt', 'r') as f:
+    with open('../ID/ID.txt', 'r') as f:
         Action = '-1'
         for line in f:
             line = line.strip()
