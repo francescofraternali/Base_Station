@@ -46,3 +46,9 @@ a0:e6:f8:bf:06:81 FF58
 a0:e6:f8:be:e5:80 FF59
 a0:e6:f8:be:e8:80 FF60
 a0:e6:f8:be:d2:85 FF61
+a0:e6:f8:bf:11:05 FF62
+a0:e6:f8:be:f6:03 FF63
+a0:e6:f8:bf:01:84 FF64
+a0:e6:f8:bf:05:81 FF65
+a0:e6:f8:be:fd:81 FF66
+a0:e6:f8:be:fc:85 FF67
