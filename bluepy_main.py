@@ -169,6 +169,8 @@ while(True):
                         #print('trovato')
                         found.append(ID)
                         Action, Name, File = get_action_name(ID)
+			log_temp = File.split('/')
+			log = log_temp[-1]
                         #File = 'blupytest.txt'
                         #print(Action)
                         #print('sensortag -T -H -B ' + ID + ' -n 1 > ' + Name + ' &')
@@ -180,7 +182,7 @@ while(True):
                         #print('here')
                         if Action == '3':
                             #print('hereh1')
-                            subprocess.Popen('sensortag -Na ' + File + ' -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
+                            subprocess.Popen('sensortag -Na ' + log + ' -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
                             #print('here')
                             #output = ps.stdout.read()
                             #ps.stdout.close()
@@ -190,11 +192,11 @@ while(True):
                             #pid_ = proc.pid
                             #print(pid_)
                         elif Action == '2':
-                            subprocess.Popen('sensortag -Na ' + File + ' -T -H -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
+                            subprocess.Popen('sensortag -Na ' + log + ' -T -H -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
                         elif Action == '0':
-                            subprocess.Popen('sensortag -Na ' + File + ' -H -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
+                            subprocess.Popen('sensortag -Na ' + log + ' -H -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
                         else:
-                            subprocess.Popen('sensortag -Na ' + File + ' -T -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
+                            subprocess.Popen('sensortag -Na ' + log + ' -T -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
                     	#print('got here')
 			#elif ID in ID_List and ID in avoid:
                     #    avoid.remove(ID)
