@@ -6,18 +6,23 @@ sudo apt-get update;
 sudo apt-get install git
 sudo apt-get install python-pip libglib2.0-dev
 sudo pip install bluepy
+sudo apt-get install screen
 
 # For more info look at: https://github.com/IanHarvey/bluepy
 
 # copy this file to the new RPi
 #scp /mnt/c/Users/Francesco/Dropbox/EH/Base_Stations_Setup/sensortag.py pi@cse-wifi-bs2140.dynamic.ucsd.edu:/home/pi/BLE_GIT/Base_Station/sensortag.py
 # then from inside the RPi
-mkdir BLE_GIT
-cd BLE_GIT
-mkdir ID
-mkdir Data
+mkdir BLE_GIT; cd BLE_GIT; mkdir ID; mkdir Data
 git init
 git clone https://github.com/francescofraternali/Base_Station.git
 sudo cp /home/pi/BLE_GIT/Base_Station/sensortag.py /usr/local/lib/python2.7/dist-packages/bluepy/sensortag.py
 #sudo cp /home/pi/BLE_GIT/Base_Station/btle.py /usr/local/lib/python2.7/dist-packages/bluepy/btle.py
 sudo cp /home/pi/BLE_GIT/Base_Station/blescan.py /usr/local/lib/python2.7/dist-packages/bluepy/blescan.py
+
+# To run screnn
+screen -dmS BLE python bluepy_main.py
+# To check
+screen -r BLE
+# To detach
+ctr+a, d
