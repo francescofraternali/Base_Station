@@ -88,7 +88,10 @@ class ScanPrint(btle.DefaultDelegate):
                )
         for (sdid, desc, val) in dev.getScanData():
             if sdid in [8, 9]:
-                print ('\t' + desc + ': \'' + ANSI_CYAN + val + ANSI_OFF + '\'')
+                try:
+                    print ('\t' + desc + ': \'' + ANSI_CYAN + val + ANSI_OFF + '\'')
+                except:
+                    continue
             else:
                 print ('\t' + desc + ': <' + val + '>')
         if not dev.scanData:
