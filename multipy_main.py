@@ -34,10 +34,15 @@ with open('pible_dev_list.txt', 'r') as inf:
         dict_dev[line[0]] = line[1]
 
 for i in range(len(File_spl)):
+	checker = 1
         for key, val in dict_dev.items():
             if Name_spl[i] == val:
                 ID_List.append(key)
-                break
+                checker = 0
+		break
+	if checker == 1:
+		print('Huston we have a problem')
+		quit()
 	Name_List.append(str(Name_spl[i])) #["Sensor_5", "Sensor_1"]
 	File_List.append('../Data/' + str(File_spl[i])) #["2142_Middle_Battery.txt", "2142_Middle_Pible.txt"]
 
@@ -141,6 +146,7 @@ print "Let us Start!!"
 #print(json.dumps(dict_dev, indent=1, sort_keys=True))
 
 avoid = []  # in this list there are all the devices that have been read and that needs to be left alone for a bit to avoid to get the data read twice.
+countarell = 0
 
 while(True):
     #print('here')	
@@ -154,8 +160,10 @@ while(True):
     found = []
     if os.stat('dev_found.txt').st_size < 2:
         print('empty')
+	sleep(5)
+	print('No devices found, something wrong? Resetting')
 	subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
-        sleep(1)
+        sleep(5)
     else:
         with open("dev_found.txt", 'r') as f:
             for line in f:
@@ -181,12 +189,12 @@ while(True):
 
 			#print(str(t) + '|' + Name + '|||')
                         #print('here')
-                        if Action == '3':
+                        #if Action == '3':
                             #print('hereh1')
                             #subprocess.Popen('sensortag -Na ' + log + ' -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
 			    #subprocess.Popen('sensortag -Na ' + log + ' -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
-                            #print(Name,ID,File,Action)
-			    subprocess.Popen("bash Detector.sh "+Name+" "+ID+" "+log+" "+Action+" &", shell=True)
+                        #print(Name,ID,File,Action,log)
+			subprocess.Popen("bash Detector.sh " + Name + " " + ID + " " + File + " " + Action + " " + log + " 2>error.txt &", shell=True)
 			    #sleep(5)
 	                    #print('here')
                             #output = ps.stdout.read()
@@ -196,14 +204,14 @@ while(True):
                             #sleep(2)
                             #pid_ = proc.pid
                             #print(pid_)
-                        elif Action == '2':
-			    subprocess.Popen("bash Detector.sh "+Name+" "+ID+" "+log+" "+Action+" &", shell=True)
+                        #elif Action == '2':
+			#    subprocess.Popen("bash Detector.sh "+Name+" "+ID+" "+log+" "+Action+" &", shell=True)
                             #subprocess.Popen('sensortag -Na ' + log + ' -T -H -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
-                        elif Action == '0':
-			    subprocess.Popen("bash Detector.sh "+Name+" "+ID+" "+log+" "+Action+" &", shell=True)
+                        #elif Action == '0':
+			#    subprocess.Popen("bash Detector.sh "+Name+" "+ID+" "+log+" "+Action+" &", shell=True)
                             #subprocess.Popen('sensortag -Na ' + log + ' -H -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
-                        else:
-			    subprocess.Popen("bash Detector.sh "+Name+" "+ID+" "+log+" "+Action+" &", shell=True)
+                        #else:
+			#    subprocess.Popen("bash Detector.sh "+Name+" "+ID+" "+log+" "+Action+" &", shell=True)
                             #subprocess.Popen('sensortag -Na ' + log + ' -T -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
                     	#print('got here')
 			#elif ID in ID_List and ID in avoid:
@@ -220,17 +228,24 @@ while(True):
                 #subprocess.Popen('sudo killall sensortag', shell=True)
 
     #print("found", found)
-    sudo hciconfig hci0 reset
     if len(avoid) > 0:
         #print('remove avoiding last ID')
         for ID in ID_List:
             if ID in avoid: 
                 avoid.remove(ID)
                 #print('removing ', ID)
-    
+    '''
     if len(avoid) == 0:
-	print('empty')
- 
+    	#print('empty')
+	countarell += 1
+	if countarell == 10:
+		sleep(5)
+		print('resetting hciconfig')
+		subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
+		countarell == 0
+		sleep(3)
+     '''
+
     if len(found) > 0:   # There are some device that needs to be downloaded
         for ID in found:
             avoid.append(ID)
@@ -245,8 +260,19 @@ while(True):
     #    avoid.append(found[-1])
     #    avoid.append(found[-1])
         #print('avoiding last ID')
-    
-    #subprocess.Popen('sudo hciconfig hci0 reset &', shell=True)
+    try:
+    	with open('error.txt','r') as f:
+		for line in f:
+			if len(line.strip()) > 0:
+				print('something wrong, resetting')
+				sleep(5)
+				os.remove('error.txt')
+				subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
+				sleep(5)
+				break
+    except:
+	continue
+
     sleep(1)
     ''' 	    
 		
