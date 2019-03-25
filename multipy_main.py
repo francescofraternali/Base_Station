@@ -41,7 +41,7 @@ for i in range(len(File_spl)):
                 checker = 0
 		break
 	if checker == 1:
-		print('Huston we have a problem')
+		print('Huston we have a problem, sensor not found! Try updating device List!')
 		quit()
 	Name_List.append(str(Name_spl[i])) #["Sensor_5", "Sensor_1"]
 	File_List.append('../Data/' + str(File_spl[i])) #["2142_Middle_Battery.txt", "2142_Middle_Pible.txt"]
