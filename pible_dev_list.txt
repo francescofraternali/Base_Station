@@ -34,6 +34,8 @@ a0:e6:f8:be:fa:05 FF16
 a0:e6:f8:be:e0:86 FF17
 a0:e6:f8:bf:15:85 FF18
 a0:e6:f8:be:f5:01 FF19
+a0:e6:f8:bf:7e:84 FF20
+a0:e6:f8:be:fb:87 FF21
 a0:e6:f8:bf:13:81 FFWhite
 a0:e6:f8:be:d5:82 FF50
 a0:e6:f8:be:d7:82 FF51
@@ -54,3 +56,4 @@ a0:e6:f8:bf:05:81 FF65
 a0:e6:f8:be:fd:81 FF66
 a0:e6:f8:be:fc:85 FF67
 a0:e6:f8:be:e5:83 FF68
+
