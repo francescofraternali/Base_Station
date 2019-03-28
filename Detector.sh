@@ -90,9 +90,9 @@ reqbar()
 {
 	#echo "Reading " $Name
 	sudo gatttool -b $ID --char-write-req -a 0x34 -n 01 > useless.txt #initiates (0x44)
-	sleep 0.3
+	sleep 1
 	barOutput="$(sudo gatttool -b $ID --char-read -a 0x31)" #collects 0x41)
-	sleep 0.3
+	sleep 0.5
 	sudo gatttool -b $ID --char-write-req -a 0x34 -n 00 > useless.txt #disables (0x44)
 
 	# Manipulating data
