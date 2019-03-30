@@ -1,0 +1,10 @@
+FF17,FF17_2142_Ceiling_Event_RL.txt,3
+FFWhite,FFWhite_2142_Ceiling_Event_Batt.txt,0
+FF18,FF18_2142_Middle_Event_RL.txt,1
+B1,B1_2142_Middle_Event_Batt.txt,2
+FF19,FF19_2142_Window_Event_RL.txt,1
+FF20,FF20_2142_Window_Event_Battery.txt,0
+FF67,FF67_2142_Discharge_Event_Batt.txt,0
+FF16,FF16_Discharge_NoPIR_10_min.txt,0
+FF68,FF68_Discharge_Event_NoEvent_5min.txt,0
+FF15,FF15_Test.txt,0

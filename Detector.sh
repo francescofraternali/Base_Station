@@ -38,14 +38,18 @@ reqlux()
 
 reqfakelux()
 {       #Lux sensor
-        luxOutput="$(sudo gatttool -b $ID --char-read -a 0x41)" #collects 0x41)
+	sudo gatttool -b $ID --char-write-req -a 0x44 -n 00 #disables (0x44)
+        #luxOutput="$(sudo gatttool -b $ID --char-read -a 0x41)" #collects 0x41)
 }
 
 reqfakehum()
 {       # Fake Hum Sensor
 	sudo gatttool -b $ID --char-write-req -a 0x2C -n 00 > useless.txt #initiates (0x44)
-	#sleep 1
+	sleep 0.5
         #HumOutput="$(sudo gatttool -b $ID --char-read -a 0x29)" #collects 0x41)
+	#sleep 0.5
+	#sudo gatttool -b $ID --char-write-req -a 0x2C -n 00 > useless.txt #initiates (0x44)
+
 }
 
 reqfaketemp()
@@ -147,8 +151,7 @@ Occupancy()
 	#reqfakehum 	# performance -1
 	#reqfaketemp	# performance +1
 	reqbar		# performance = 0. This has always to be there
-
-    	#Write Data
+	#Write Data
     	dt=$(date '+%m/%d/%y %H:%M:%S');
     	echo "${dt}|${log}|${celsius} degC|${lux} lux|${bar}|${raw_hum_data}|${raw_bar_data}" # prints data in celsius a$
     	printf "\n${dt}|${log}|${celsius}|${lux}|${bar}|${raw_hum_data}|${raw_bar_data}" >> $File #prints $
