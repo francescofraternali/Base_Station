@@ -70,3 +70,4 @@ a0:e6:f8:bf:05:81 FF65
 a0:e6:f8:be:fd:81 FF66
 a0:e6:f8:be:fc:85 FF67
 a0:e6:f8:be:e5:83 FF68
+a0:e6:f8:bf:8a:06 FF69
