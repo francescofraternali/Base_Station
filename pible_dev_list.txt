@@ -47,6 +47,9 @@ a0:e6:f8:bf:14:85 FF28
 a0:e6:f8:be:e4:86 FF29
 a0:e6:f8:be:df:05 FF30
 a0:e6:f8:be:e1:83 FF31
+a0:e6:f8:be:e7:82 FF32
+a0:e6:f8:be:e6:86 FF33
+a0:e6:f8:be:f5:06 FF34
 a0:e6:f8:bf:13:81 FFWhite
 a0:e6:f8:be:d5:82 FF50
 a0:e6:f8:be:d7:82 FF51
