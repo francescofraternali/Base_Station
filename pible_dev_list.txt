@@ -71,4 +71,17 @@ a0:e6:f8:be:fd:81 FF66
 a0:e6:f8:be:fc:85 FF67
 a0:e6:f8:be:e5:83 FF68
 a0:e6:f8:bf:8a:06 FF69
+a0:e6:f8:be:dd:82 FF86
+a0:e6:f8:bf:5e:84 FF87
+a0:e6:f8:bf:65:84 FF88
+a0:e6:f8:be:fc:82 FF89
+a0:e6:f8:bf:07:83 FF90
+a0:e6:f8:bf:71:84 FF91
+a0:e6:f8:be:da:01 FF92
+a0:e6:f8:be:e2:86 FF93
+a0:e6:f8:be:ef:01 FF94
+a0:e6:f8:be:db:02 FF95
+a0:e6:f8:bf:6d:80 FF96
+a0:e6:f8:bf:65:83 FF97
+a0:e6:f8:be:d4:80 FF98
 a0:e6:f8:be:ed:02 FF99
