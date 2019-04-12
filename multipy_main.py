@@ -153,7 +153,10 @@ while(True):
     Name = ''
     File = ''
     #print("scanning")
-    os.remove('dev_found.txt')
+    try:
+    	os.remove('dev_found.txt')
+    except:
+	pass
     #subprocess.Popen("bash Find_New_BLE_Device.sh > dev_found.txt", shell=True)
     subprocess.Popen('sudo blescan -t 3 > dev_found.txt', shell=True)
     sleep(3.5)
