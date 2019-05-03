@@ -8,12 +8,13 @@ import datetime
 from subprocess import PIPE
 
 path = '/home/pi/BLE_GIT/Base_Station/'
-ID_List =[]
+ID_List = []
 Name_List = []
 File_List = []
 
 Name_spl = []
 File_spl = []
+
 with open("../ID/ID.txt", "r") as f:
     for line in f:
         splitted = line.split(',')
@@ -21,6 +22,7 @@ with open("../ID/ID.txt", "r") as f:
         Name_spl.append(splitted[0]) 
         File_spl.append(splitted[1]) 
 #print(Name_spl, File_spl)
+
 if len(Name_spl) == len(File_spl):
     print("File Ok Ok")
 else:
@@ -40,7 +42,7 @@ for i in range(len(File_spl)):
             if Name_spl[i] == val:
                 ID_List.append(key)
                 checker = 0
-		break
+                break
 	if checker == 1:
 		print('Huston we have a problem, sensor not found! Try updating device List!')
 		quit()
@@ -157,22 +159,22 @@ while(True):
     try:
     	os.remove('dev_found.txt')
     except:
-	pass
+        pass
     #subprocess.Popen("bash Find_New_BLE_Device.sh > dev_found.txt", shell=True)
     subprocess.Popen('sudo blescan -t 3 > dev_found.txt', shell=True)
     sleep(3.5)
     found = []
     if os.stat('dev_found.txt').st_size < 2:
         print('empty')
-	sleep(5)
-	print('No devices found, something wrong? Resetting')
-	subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
+        sleep(5)
+        print('No devices found, something wrong? Resetting')
+        subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
         sleep(5)
     else:
         with open("dev_found.txt", 'r') as f:
             for line in f:
                 line = line.strip()
-		#print(len(line))
+                #print(len(line))
                 splitted = line.split(' ')
                 try:
                     ID = splitted[2][5:22]
@@ -182,54 +184,24 @@ while(True):
                         #print('trovato')
                         found.append(ID)
                         Action, Name, File = get_action_name(ID)
-			log_temp = File.split('/')
-			log = log_temp[-1]
+                        log_temp = File.split('/')
+                        log = log_temp[-1]
                         #File = 'blupytest.txt'
                         #print(Action)
                         #print('sensortag -T -H -B ' + ID + ' -n 1 > ' + Name + ' &')
-			t = time.strftime('%m/%d/%y %H:%M:%S')
-			#with open(File, 'a') as f:
+                        t = time.strftime('%m/%d/%y %H:%M:%S')
+                        #with open(File, 'a') as f:
                         #    f.write('\n' + str(t) + '|' + Name + '|||')
 
-			#print(str(t) + '|' + Name + '|||')
+                        #print(str(t) + '|' + Name + '|||')
                         #print('here')
                         #if Action == '3':
                             #print('hereh1')
                             #subprocess.Popen('sensortag -Na ' + log + ' -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
-			    #subprocess.Popen('sensortag -Na ' + log + ' -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
+                        #subprocess.Popen('sensortag -Na ' + log + ' -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
                         #print(Name,ID,File,Action,log)
-			subprocess.Popen("bash Detector.sh " + Name + " " + ID + " " + File + " " + Action + " " + log + " 2>error.txt &", shell=True)
-			    #sleep(5)
-	                    #print('here')
-                            #output = ps.stdout.read()
-                            #ps.stdout.close()
-                            
-                            #print('here')
-                            #sleep(2)
-                            #pid_ = proc.pid
-                            #print(pid_)
-                        #elif Action == '2':
-			#    subprocess.Popen("bash Detector.sh "+Name+" "+ID+" "+log+" "+Action+" &", shell=True)
-                            #subprocess.Popen('sensortag -Na ' + log + ' -T -H -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
-                        #elif Action == '0':
-			#    subprocess.Popen("bash Detector.sh "+Name+" "+ID+" "+log+" "+Action+" &", shell=True)
-                            #subprocess.Popen('sensortag -Na ' + log + ' -H -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
-                        #else:
-			#    subprocess.Popen("bash Detector.sh "+Name+" "+ID+" "+log+" "+Action+" &", shell=True)
-                            #subprocess.Popen('sensortag -Na ' + log + ' -T -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
-                    	#print('got here')
-			#elif ID in ID_List and ID in avoid:
-                    #    avoid.remove(ID)
+                        subprocess.Popen("bash Detector.sh " + Name + " " + ID + " " + File + " " + Action + " " + log + " 2>error.txt &", shell=True)
 
-        #if len(found) > 0:
-            
-            #while(True):
-            #        print(pid_)
-            #        quit()
-        	#print('found')
-                #sleep(10)
-		#print('killed')
-                #subprocess.Popen('sudo killall sensortag', shell=True)
 
     #print("found", found)
     if len(avoid) > 0:
@@ -238,24 +210,13 @@ while(True):
             if ID in avoid: 
                 avoid.remove(ID)
                 #print('removing ', ID)
-    '''
-    if len(avoid) == 0:
-    	#print('empty')
-	countarell += 1
-	if countarell == 10:
-		sleep(5)
-		print('resetting hciconfig')
-		subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
-		countarell == 0
-		sleep(3)
-     '''
 
     if len(found) > 0:   # There are some device that needs to be downloaded
         for ID in found:
             avoid.append(ID)
             avoid.append(ID)
             avoid.append(ID)
-	    #avoid.append(ID)
+            #avoid.append(ID)
             #print('avoiding ', ID)
         
        
