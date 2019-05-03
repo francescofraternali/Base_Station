@@ -243,9 +243,12 @@ while(True):
 
     sleep(1)
 
-    #subprocess.Popen("cat /var/log/auth.log | grep 'Accepted password' > Accepted_file.txt", shell=True)
+    proc = subprocess.Popen("cat /var/log/auth.log | grep 'Accepted password' > Accepted_file.txt", stdout=subprocess.PIPE, shell=True)
+    #proc = Popen("ls Q_Tables", stdout=PIPE, shell=True)
+    (out, err) = proc.communicate()
+	
     #subprocess.Popen('tail -1 Accepted_file.txt > Accepted_file.txt', shell=True)
-    for line in reversed(open('/var/log/auth.log').readlines()):
+    for line in reversed(open('Accepted_file.txt').readlines()):
         print line.rstrip()
         quit()
     with open('/var/log/auth.log', 'r') as f:
