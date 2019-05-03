@@ -142,7 +142,7 @@ def get_action_name(ID):
     return (Action, Name, File)
      
 
-def check_reboot()
+def check_reboot():
     proc = subprocess.Popen("cat /var/log/auth.log | grep 'Accepted password' > Accepted_file.txt", stdout=subprocess.PIPE, shell=True)
     (out, err) = proc.communicate()
 	
