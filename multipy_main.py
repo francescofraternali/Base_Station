@@ -81,11 +81,11 @@ def check():
                 with open('wait.txt', 'r') as f:
                     first_line = f.readline()
 			
-		first = first_line[:1]
-		if first == '2':
-		    sleep(write_completed)
-		    return
-	        sleep(0.5)
+                first = first_line[:1]
+                if first == '2':
+                    sleep(write_completed)
+                    return
+		sleep(0.5)
 	sleep(0.5)
 
 def get_raw_data(ID):
