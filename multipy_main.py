@@ -265,7 +265,7 @@ while(True):
     if(1):
         with open('last_time.txt', 'r') as f:
             out = f.readlines()
-        now_last = datetime.datetime.strptime(str(out), '%m/%d/%y %H:%M:%S')
+        now_last = datetime.datetime.strptime(out[0], '%m/%d/%y %H:%M:%S')
         print(now_last)
     #except:
     #	with open('last_time.txt', 'w') as f:
