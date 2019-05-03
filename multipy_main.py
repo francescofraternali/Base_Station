@@ -73,8 +73,8 @@ def check():
         #print(first)
         if first == '2': # if it reads 2 that means that Detector.sh has already written everything
 	    #print "Sleep 1"
-	    sleep(write_completed)
-	    return
+            sleep(write_completed)
+            return
         if first == '1': #if it reads 1 it we five him other 10 extra seconds to finish to write the data
             for i in range(0,10):
                 #print('here')
