@@ -255,7 +255,8 @@ while(True):
     clock = spl[2].split(':')
 
     now = datetime.datetime.now()
-    last_time = datetime.datetime(now.year,spl[0],spl[1],clock[0],clock[1],clock[2])
+    print(clock[0])
+    last_time = datetime.datetime(int(now.year), int(spl[0]), int(spl[1]), int(clock[0]), int(clock[1]), int(clock[2]))
     print(last_time)
     
     ''' 	    
