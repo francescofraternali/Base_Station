@@ -68,7 +68,7 @@ def killer():
 def check():
     for ii in range(0,tryals):
         with open('wait.txt', 'r') as f:
-	    first_line = f.readline()
+            first_line = f.readline()
 	first = first_line[:1]
         #print(first)
         if first == '2': # if it reads 2 that means that Detector.sh has already written everything
