@@ -257,15 +257,23 @@ while(True):
     clock = spl[3].split(':')
 	
     now = datetime.datetime.now()
+    
+    
     #print(clock[0])
     month = datetime.datetime.strptime(spl[0], '%b')
     last_time = datetime.datetime(int(now.year), int(month.month), int(spl[2]), int(clock[0]), int(clock[1]), int(clock[2]))
-    #print(now, last_time)
-    
-    diff = (now - last_time).total_seconds()
-    if diff > 60*1:
-	with open('curr_time.txt', 'w') as f:
-	    f.write(now)
+    with open('last_time.txt', 'r') as f:
+        out = f.readlines()
+    now_last = datetime.datetime.strptime(out, '%m/%d/%y %H:%M:%S')
+    print(now_last)
+
+    diff_1 = (now - last_time).total_seconds()
+    diff_2 = (now - now_last).total_seconds()
+    if diff_1 > 60*1 and diff_2 > 60*1:
+	now_time = now.strftime('%m/%d/%y %H:%M:%S')
+	with open('last_time.txt', 'w') as f:
+	    f.write(now_time)
+	sleep(1)
         print("Nobody wants me. Or maybe I am broken? Reeboting...")
 	quit()
         subprocess.Popen("sudo reboot", shell=True)
