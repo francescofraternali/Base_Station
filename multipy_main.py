@@ -263,10 +263,11 @@ while(True):
     #print(now, last_time)
     
     diff = (now - last_time).total_seconds()
-    if diff > 60*60:
+    if diff > 60*1:
 	proc = subprocess.Popen(" datetime.datetime.now() > current_time.txt", stdout=subprocess.PIPE, shell=True)
         (out, err) = proc.communicate()
         print("Nobody wants me. Or maybe I am broken? Reeboting...")
+	quit()
         subprocess.Popen("sudo reboot", shell=True)
 	
 print("It's Over")
