@@ -253,15 +253,18 @@ while(True):
         spl = line.rstrip()
 	break
     spl = spl.split(' ')
-    print(spl)
+    #print(spl)
     clock = spl[3].split(':')
 	
     now = datetime.datetime.now()
-    print(clock[0])
+    #print(clock[0])
     month = datetime.datetime.strptime(spl[0], '%b')
     last_time = datetime.datetime(int(now.year), int(month.month), int(spl[2]), int(clock[0]), int(clock[1]), int(clock[2]))
-    print(last_time)
+    print(now, last_time)
     
+    diff = now - last_time
+    print(diff)
+    quit()
     ''' 	    
 		
     ID = ID_List[x]
