@@ -254,13 +254,12 @@ while(True):
 	break
     spl = spl.split(' ')
     print(spl)
-    clock = spl[2].split(':')
+    clock = spl[3].split(':')
 	
-
     now = datetime.datetime.now()
     print(clock[0])
     month = datetime.datetime.strptime(spl[0], '%b')
-    last_time = datetime.datetime(int(now.year), int(month.month), int(spl[1]), int(clock[0]), int(clock[1]), int(clock[2]))
+    last_time = datetime.datetime(int(now.year), int(month.month), int(spl[2]), int(clock[0]), int(clock[1]), int(clock[2]))
     print(last_time)
     
     ''' 	    
