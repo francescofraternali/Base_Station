@@ -85,8 +85,8 @@ def check():
                 if first == '2':
                     sleep(write_completed)
                     return
-		sleep(0.5)
-	sleep(0.5)
+                sleep(0.5)
+        sleep(0.5)
 
 def get_raw_data(ID):
     with open('wait.txt', 'w') as f:
