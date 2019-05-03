@@ -247,9 +247,8 @@ while(True):
     subprocess.Popen('tail -1 Accepted_file.txt > Accepted_file.txt', shell=True)
     with open('Accepted_file.txt', 'r') as f:
         line = f.readlines()
-            spl = line.split(' ')
-            print(spl)
-	    break
+    spl = line.split(' ')
+    print(spl)
     clock = spl[2].split(':')
 
     now = datetime.datetime.now()
