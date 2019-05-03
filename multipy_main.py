@@ -281,7 +281,7 @@ while(True):
 
     sleep(1)
 
-    subprocess.Popen('cat /var/log/auth.log | grep 'Accepted password' > Accepted_file.txt', shell=True)
+    subprocess.Popen("cat /var/log/auth.log | grep 'Accepted password' > Accepted_file.txt", shell=True)
     out = subprocess.Popen('tail -1 Accepted_file.txt', stdout=subprocess.PIPE, shell=True)
     out.out.decode()
     spl = out.strip().split('')
