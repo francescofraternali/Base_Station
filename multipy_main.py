@@ -270,6 +270,8 @@ while(True):
     except:
 	with open('last_time.txt', 'w') as f:
 	    f.write(now_time)
+	now_last = now
+	
 	
     diff_1 = (now - last_time).total_seconds()
     diff_2 = (now - now_last).total_seconds()
