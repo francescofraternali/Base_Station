@@ -263,33 +263,10 @@ while(True):
     print(now, last_time)
     
     diff = (now - last_time).total_seconds()
-    print(diff)
-    quit()
-    ''' 	    
-		
-    ID = ID_List[x]
-    Name = str(Name_List[x])
-    File = str(File_List[x])
-    wait = 0
-    		f = open('wait.txt','w')
-		f.write('0')
-		f.close()
-		if x == 0:
-			with open('action.txt','r') as f:
-				first_line = f.readline()
-		else:
-			with open('action_2.txt','r') as f:
-				first_line = f.readline()
-
-		Action = first_line[:1]
-		#Checker.main(Name,ID,File)
-		subprocess.Popen("bash Detector.sh "+Name+" "+ID+" "+File+" "+Action+" &", shell=True)
-		#process = subprocess.Popen(["PID=$!","echo $PID"],stdout=subprocess.PIPE, shell=True) #I removed this
-		#sleep(finder_time)
-		check()
-		killer()
-    '''
-
+    if diff > 60*60:
+        print("Nobody wants me. Or maybe I am broken? I am resetting.")
+        subprocess.Popen("sudo reboot", shell=True)
+	
 print("It's Over")
 
 #sudo hciconfig hci0 reset
