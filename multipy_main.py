@@ -260,11 +260,13 @@ while(True):
     #print(clock[0])
     month = datetime.datetime.strptime(spl[0], '%b')
     last_time = datetime.datetime(int(now.year), int(month.month), int(spl[2]), int(clock[0]), int(clock[1]), int(clock[2]))
-    print(now, last_time)
+    #print(now, last_time)
     
     diff = (now - last_time).total_seconds()
     if diff > 60*60:
-        print("Nobody wants me. Or maybe I am broken? I am resetting.")
+	proc = subprocess.Popen(" datetime.datetime.now() > current_time.txt", stdout=subprocess.PIPE, shell=True)
+        (out, err) = proc.communicate()
+        print("Nobody wants me. Or maybe I am broken? Reeboting...")
         subprocess.Popen("sudo reboot", shell=True)
 	
 print("It's Over")
