@@ -142,6 +142,44 @@ def get_action_name(ID):
     return (Action, Name, File)
      
 
+def check_reboot()
+    proc = subprocess.Popen("cat /var/log/auth.log | grep 'Accepted password' > Accepted_file.txt", stdout=subprocess.PIPE, shell=True)
+    (out, err) = proc.communicate()
+	
+    for line in reversed(open('Accepted_file.txt').readlines()):
+        #print(line.rstrip())
+        spl = line.rstrip()
+	break
+    spl = spl.split(' ')
+    clock = spl[3].split(':')
+	
+    now = datetime.datetime.now()
+    now_time = now.strftime('%m/%d/%y %H:%M:%S')
+
+    month = datetime.datetime.strptime(spl[0], '%b')
+    last_time = datetime.datetime(int(now.year), int(month.month), int(spl[2]), int(clock[0]), int(clock[1]), int(clock[2]))
+    try:
+        with open('last_time.txt', 'r') as f:
+            out = f.readlines()
+        now_last = datetime.datetime.strptime(out[0], '%m/%d/%y %H:%M:%S')
+        #print(now_last)
+    except:
+    	with open('last_time.txt', 'w') as f:
+    	    f.write(now_time)
+    	now_last = now
+	
+    diff_1 = (now - last_time).total_seconds()
+    diff_2 = (now - now_last).total_seconds()
+	
+    if diff_1 > 60*60*1 and diff_2 > 60*60*24:  # if nobody is writing for diff_1 time and the BS was one for one day, then reboot
+	with open('last_time.txt', 'w') as f:
+	    f.write(now_time)
+	sleep(1)
+        print("Nobody wants me. Or maybe I am broken? Reeboting...")
+	quit()
+        subprocess.Popen("sudo reboot", shell=True)
+	
+	
 print("Let us Start!!")
 
 #Reset BLE drivers
@@ -242,46 +280,11 @@ while(True):
         continue
 
     sleep(1)
-
-    proc = subprocess.Popen("cat /var/log/auth.log | grep 'Accepted password' > Accepted_file.txt", stdout=subprocess.PIPE, shell=True)
-    #proc = Popen("ls Q_Tables", stdout=PIPE, shell=True)
-    (out, err) = proc.communicate()
-	
-    #subprocess.Popen('tail -1 Accepted_file.txt > Accepted_file.txt', shell=True)
-    for line in reversed(open('Accepted_file.txt').readlines()):
-        #print(line.rstrip())
-        spl = line.rstrip()
-	break
-    spl = spl.split(' ')
-    #print(spl)
-    clock = spl[3].split(':')
-	
-    now = datetime.datetime.now()
-    now_time = now.strftime('%m/%d/%y %H:%M:%S')
-    
-    #print(clock[0])
-    month = datetime.datetime.strptime(spl[0], '%b')
-    last_time = datetime.datetime(int(now.year), int(month.month), int(spl[2]), int(clock[0]), int(clock[1]), int(clock[2]))
-    if(1):
-        with open('last_time.txt', 'r') as f:
-            out = f.readlines()
-        now_last = datetime.datetime.strptime(out[0], '%m/%d/%y %H:%M:%S')
-        print(now_last)
-    #except:
-    #	with open('last_time.txt', 'w') as f:
-    #	    f.write(now_time)
-    #	now_last = now
-	
-	
-    diff_1 = (now - last_time).total_seconds()
-    diff_2 = (now - now_last).total_seconds()
-    if diff_1 > 60*1 and diff_2 > 60*1:
-	with open('last_time.txt', 'w') as f:
-	    f.write(now_time)
-	sleep(1)
-        print("Nobody wants me. Or maybe I am broken? Reeboting...")
-	quit()
-        subprocess.Popen("sudo reboot", shell=True)
+    countarell += 1
+    if countarell >= 360:
+    	check_reboot()
+	countarell = 0
+        sleep(1)
 	
 print("It's Over")
 
