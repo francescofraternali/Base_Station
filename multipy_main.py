@@ -5,6 +5,7 @@ import json
 import os
 import time
 import datetime
+from subprocess import PIPE
 
 path = '/home/pi/BLE_GIT/Base_Station/'
 ID_List =[]
@@ -283,7 +284,7 @@ while(True):
 
     subprocess.Popen("cat /var/log/auth.log | grep 'Accepted password' > Accepted_file.txt", shell=True)
     out = subprocess.Popen('tail -1 Accepted_file.txt', stdout=subprocess.PIPE, shell=True)
-    out.out.decode()
+    out = out.decode()
     spl = out.strip().split('')
     clock = spl[2].split(':')
 
