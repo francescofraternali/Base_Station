@@ -22,9 +22,9 @@ with open("../ID/ID.txt", "r") as f:
         File_spl.append(splitted[1]) 
 #print(Name_spl, File_spl)
 if len(Name_spl) == len(File_spl):
-    print "File Ok Ok"
+    print("File Ok Ok")
 else:
-    print "Error: Check ID File"
+    print("Error: Check ID File")
     quit()
 
 dict_dev = {}
