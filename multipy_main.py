@@ -249,13 +249,8 @@ while(True):
 	
     #subprocess.Popen('tail -1 Accepted_file.txt > Accepted_file.txt', shell=True)
     for line in reversed(open('Accepted_file.txt').readlines()):
-        print line.rstrip()
-        quit()
-    with open('/var/log/auth.log', 'r') as f:
-        for line in f:
-            print(line)
-	    break
-    spl = line.split(' ')
+        #line line.rstrip())
+        spl = line.strip(),split(' ')
     print(spl)
     clock = spl[2].split(':')
 
