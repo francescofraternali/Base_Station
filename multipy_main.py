@@ -142,7 +142,7 @@ def get_action_name(ID):
     return (Action, Name, File)
      
 
-print "Let us Start!!"
+print("Let us Start!!")
 
 #Reset BLE drivers
 #subprocess.Popen("sudo hciconfig hci0 reset &", shell=True)
