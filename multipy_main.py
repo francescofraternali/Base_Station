@@ -252,7 +252,7 @@ while(True):
         #print(line.rstrip())
         spl = line.rstrip()
 	break
-    spl = apl.split(' ')
+    spl = spl.split(' ')
     print(spl)
     clock = spl[2].split(':')
 	
