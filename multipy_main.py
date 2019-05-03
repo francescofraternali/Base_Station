@@ -250,7 +250,7 @@ while(True):
     #subprocess.Popen('tail -1 Accepted_file.txt > Accepted_file.txt', shell=True)
     for line in reversed(open('Accepted_file.txt').readlines()):
         #line line.rstrip())
-        spl = line.strip(),split(' ')
+        spl = line.strip().split(' ')
     print(spl)
     clock = spl[2].split(':')
 
