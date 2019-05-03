@@ -246,8 +246,8 @@ while(True):
     subprocess.Popen("cat /var/log/auth.log | grep 'Accepted password' > Accepted_file.txt", shell=True)
     subprocess.Popen('tail -1 Accepted_file.txt > Accepted_file.txt', shell=True)
     with open('Accepted_file.txt', 'r') as f:
-        for line in f:
-            spl = line.strip().split(' ')
+        line = f.readlines()
+            spl = line.split(' ')
             print(spl)
 	    break
     clock = spl[2].split(':')
