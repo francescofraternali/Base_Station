@@ -78,8 +78,8 @@ def check():
         if first == '1': #if it reads 1 it we five him other 10 extra seconds to finish to write the data
             for i in range(0,10):
                 #print('here')
-		with open('wait.txt', 'r') as f:
-		    first_line = f.readline()
+                with open('wait.txt', 'r') as f:
+                    first_line = f.readline()
 			
 		first = first_line[:1]
 		if first == '2':
