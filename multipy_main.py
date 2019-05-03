@@ -245,6 +245,9 @@ while(True):
 
     #subprocess.Popen("cat /var/log/auth.log | grep 'Accepted password' > Accepted_file.txt", shell=True)
     #subprocess.Popen('tail -1 Accepted_file.txt > Accepted_file.txt', shell=True)
+    for line in reversed(open('/var/log/auth.log').readlines()):
+        print line.rstrip()
+        quit()
     with open('/var/log/auth.log', 'r') as f:
         for line in f:
             print(line)
