@@ -227,17 +227,17 @@ while(True):
         #print('avoiding last ID')
     try:
     	with open('error.txt','r') as f:
-		for line in f:
-			#print(line)
-			contain = line.strip().split(' ')
-			if (len(line.strip()) > 0) and '(38)' not in contain and '(107)' not in contain and '(111)' not in contain and 'unlikely' not in contain and 'Traceback' not in contain:
-				print(line)
-				print('something wrong, resetting')
-				sleep(5)
-				os.remove('error.txt')
-				subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
-				sleep(5)
-				break
+            for line in f:
+	        #print(line)
+		contain = line.strip().split(' ')
+		if (len(line.strip()) > 0) and '(38)' not in contain and '(107)' not in contain and '(111)' not in contain and 'unlikely' not in contain and 'Traceback' not in contain:
+		    print(line)
+		    print('something wrong, resetting')
+		    sleep(5)
+		    os.remove('error.txt')
+		    subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
+		    sleep(5)
+		    break
     except:
 	continue
 
