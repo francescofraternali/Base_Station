@@ -262,7 +262,7 @@ while(True):
     last_time = datetime.datetime(int(now.year), int(month.month), int(spl[2]), int(clock[0]), int(clock[1]), int(clock[2]))
     print(now, last_time)
     
-    diff = now - last_time
+    diff = (now - last_time).total_minutes()
     print(diff)
     quit()
     ''' 	    
