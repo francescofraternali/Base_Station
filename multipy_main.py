@@ -190,7 +190,7 @@ print("Let us Start!!")
 #print(json.dumps(dict_dev, indent=1, sort_keys=True))
 
 avoid = []  # in this list there are all the devices that have been read and that needs to be left alone for a bit to avoid to get the data read twice.
-countarell = 0
+countarell = 360
 
 while(True):
     #print('here')	
