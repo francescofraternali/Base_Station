@@ -151,6 +151,7 @@ def check_reboot():
         spl = line.rstrip()
 	break
     spl = spl.split(' ')
+    print(spl)
     clock = spl[3].split(':')
 	
     now = datetime.datetime.now()
@@ -282,7 +283,10 @@ while(True):
     sleep(1)
     countarell += 1
     if countarell >= 360:
-    	check_reboot()
+	try:
+    	    check_reboot()
+	except:
+	    print("something wrong in check_reboot")
 	countarell = 0
         sleep(1)
 	
