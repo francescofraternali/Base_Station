@@ -150,10 +150,10 @@ def check_reboot():
         #print(line.rstrip())
         spl = line.rstrip()
 	spl = spl.split(' ')
-	print(spl)
 	if 'Accepted' in spl:
 	    break
-    
+	
+    print(spl)
     clock = spl[3].split(':')
 	
     now = datetime.datetime.now()
@@ -190,7 +190,7 @@ print("Let us Start!!")
 #print(json.dumps(dict_dev, indent=1, sort_keys=True))
 
 avoid = []  # in this list there are all the devices that have been read and that needs to be left alone for a bit to avoid to get the data read twice.
-countarell = 360
+countarell = 0
 
 while(True):
     #print('here')	
