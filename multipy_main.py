@@ -149,9 +149,11 @@ def check_reboot():
     for line in reversed(open('Accepted_file.txt').readlines()):
         #print(line.rstrip())
         spl = line.rstrip()
-	break
-    spl = spl.split(' ')
-    print(spl)
+	spl = spl.split(' ')
+	print(spl)
+	if 'Accepted' in spl:
+	    break
+    
     clock = spl[3].split(':')
 	
     now = datetime.datetime.now()
