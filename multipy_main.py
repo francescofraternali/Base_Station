@@ -165,11 +165,11 @@ def check_reboot():
         with open('last_time.txt', 'r') as f:
             out = f.readlines()
         now_last = datetime.datetime.strptime(out[0], '%m/%d/%y %H:%M:%S')
-        print("file exists", now_last)
+        #print("file exists", now_last)
     else:
     	with open('last_time.txt', 'w') as f:
     	    f.write(now_time)
-	print("file does not exist", now)
+	print("File does not exist. Creating it", now)
     	now_last = now
 	
     diff_1 = (now - last_time).total_seconds()
