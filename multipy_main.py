@@ -161,14 +161,15 @@ def check_reboot():
 
     month = datetime.datetime.strptime(spl[0], '%b')
     last_time = datetime.datetime(int(now.year), int(month.month), int(spl[2]), int(clock[0]), int(clock[1]), int(clock[2]))
-    try:
+    if os.path.isfile('last_time.txt'):
         with open('last_time.txt', 'r') as f:
             out = f.readlines()
         now_last = datetime.datetime.strptime(out[0], '%m/%d/%y %H:%M:%S')
-        #print(now_last)
-    except:
+        print("file exists", now_last)
+    else:
     	with open('last_time.txt', 'w') as f:
     	    f.write(now_time)
+	print("file does not exist", now)
     	now_last = now
 	
     diff_1 = (now - last_time).total_seconds()
