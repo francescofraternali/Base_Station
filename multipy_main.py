@@ -179,7 +179,7 @@ def check_reboot():
 	with open('last_time.txt', 'w') as f:
 	    f.write(now_time)
 	sleep(1)
-        print("Nobody wants me. Or maybe I am broken? Reeboting...")print('List Empty. No devices found, something wrong? Resetting BLE hci0 adapter')
+        print("Nobody wants me. Or maybe I am broken? Reeboting...")
         subprocess.Popen("sudo reboot", shell=True)
 	
 	
