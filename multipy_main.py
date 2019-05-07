@@ -173,13 +173,13 @@ def check_reboot():
 	
     diff_1 = (now - last_time).total_seconds()
     diff_2 = (now - now_last).total_seconds()
-	
+    
+    print(diff_1, diff_2)
     if diff_1 > 60*60*1 and diff_2 > 60*60*24:  # if nobody is writing for diff_1 time and the BS was one for one day, then reboot
 	with open('last_time.txt', 'w') as f:
 	    f.write(now_time)
 	sleep(1)
-        print("Nobody wants me. Or maybe I am broken? Reeboting...")
-	quit()
+        print("Nobody wants me. Or maybe I am broken? Reeboting...")print('List Empty. No devices found, something wrong? Resetting BLE hci0 adapter')
         subprocess.Popen("sudo reboot", shell=True)
 	
 	
@@ -191,6 +191,7 @@ print("Let us Start!!")
 
 avoid = []  # in this list there are all the devices that have been read and that needs to be left alone for a bit to avoid to get the data read twice.
 countarell = 0
+count_empty = 0
 
 while(True):
     #print('here')	
@@ -208,10 +209,17 @@ while(True):
     if os.stat('dev_found.txt').st_size < 2:
         print('empty')
         sleep(5)
-        print('No devices found, something wrong? Resetting')
-        subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
-        sleep(5)
+	if count_empty >= 10:
+	    print('List Empty. No devices found for a while. Rebooting BS.')
+	    subprocess.Popen('sudo reboot', shell=True)
+            sleep(5)
+        else:
+	    print('List Empty. No devices found, something wrong? Resetting BLE hci0 adapter')
+	    subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
+	    count_empy += 1
+	
     else:
+	count_empy = 0
         with open("dev_found.txt", 'r') as f:
             for line in f:
                 line = line.strip()
