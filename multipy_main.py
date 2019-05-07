@@ -293,7 +293,7 @@ while(True):
 
     sleep(1)
     countarell += 1
-    if countarell >= 0:
+    if countarell >= 360: # Use 360 as default that is 60*30/5 sec
 	try:
     	    check_reboot()
 	except:
