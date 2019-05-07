@@ -174,7 +174,7 @@ def check_reboot():
     diff_1 = (now - last_time).total_seconds()
     diff_2 = (now - now_last).total_seconds()
     
-    print(str(diff_1) + "/3600, " + str(diff_2) + "/86400")
+    print(str(int(diff_1)) + "/3600, " + str(int(diff_2)) + "/86400")
     if diff_1 > 60*60*1 and diff_2 > 60*60*24:  # if nobody is writing for diff_1 time and the BS was one for one day, then reboot
 	with open('last_time.txt', 'w') as f:
 	    f.write(now_time)
