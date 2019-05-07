@@ -292,7 +292,7 @@ while(True):
 
     sleep(1)
     countarell += 1
-    if countarell >= 360:
+    if countarell >= 0:
 	try:
     	    check_reboot()
 	except:
