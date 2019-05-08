@@ -204,11 +204,12 @@ while(True):
     except:
         pass
     #subprocess.Popen("bash Find_New_BLE_Device.sh > dev_found.txt", shell=True)
-    subprocess.Popen('sudo blescan -t 3 > dev_found.txt', shell=True)
+    subprocess.Popen('sudo blescan -t 3 > dev_found.txt 2> ble_err.txt', shell=True)
     sleep(3.5)
     found = []
-    if os.stat('dev_found.txt').st_size < 2:
-        print('empty')
+    print(os.stat('ble_err.txt').st_size)
+    if os.stat('dev_found.txt').st_size < 2 and os.stat('ble_err.txt').st_size > 1:
+        print('dev_found empty or blescan error')
         sleep(5)
 	if count_empty >= 10:
 	    print('List Empty. No devices found for a while. Rebooting BS.')
