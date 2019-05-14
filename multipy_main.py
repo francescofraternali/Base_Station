@@ -150,17 +150,17 @@ def check_reboot():
         #print(line.rstrip())
         spl = line.rstrip()
 	spl = spl.split(' ')
-	if 'Accepted' in spl:
+	if 'Accepted' in spl and spl[1].isdigit():
 	    break
 	
     print(spl)
-    clock = spl[3].split(':')
+    clock = spl[2].split(':')
 	
     now = datetime.datetime.now()
     now_time = now.strftime('%m/%d/%y %H:%M:%S')
 
     month = datetime.datetime.strptime(spl[0], '%b')
-    last_time = datetime.datetime(int(now.year), int(month.month), int(spl[2]), int(clock[0]), int(clock[1]), int(clock[2]))
+    last_time = datetime.datetime(int(now.year), int(month.month), int(spl[1]), int(clock[0]), int(clock[1]), int(clock[2]))
     if os.path.isfile('last_time.txt'):
         with open('last_time.txt', 'r') as f:
             out = f.readlines()
@@ -218,10 +218,10 @@ while(True):
         else:
 	    print('List Empty. No devices found, something wrong? Resetting BLE hci0 adapter')
 	    subprocess.Popen('sudo hciconfig hci0 reset', shell=True)
-	    count_empy += 1
+	    count_empty += 1
 	
     else:
-	count_empy = 0
+	count_empty = 0
         with open("dev_found.txt", 'r') as f:
             for line in f:
                 line = line.strip()
@@ -297,8 +297,8 @@ while(True):
     if countarell >= 360: # Use 360 as default that is 60*30/5 sec
 	try:
     	    check_reboot()
-	except:
-	    print("something wrong in check_reboot")
+	except Exception as e: print("something wrong in check_reboot with error: ", e)
+	
 	countarell = 0
         sleep(1)
 	
