@@ -295,6 +295,7 @@ while(True):
     countarell += 1
     if countarell >= 360: # Use 360 as default that is 60*30/5 sec
 	try:
+	    print("checking reboot")
     	    action_imposed = check_reboot()
 	except Exception as e: print("something wrong in check_reboot with error: ", e)
 	
