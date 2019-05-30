@@ -160,29 +160,35 @@ def check_reboot():
     now_time = now.strftime('%m/%d/%y %H:%M:%S')
 
     month = datetime.datetime.strptime(spl[0], '%b')
-    last_time = datetime.datetime(int(now.year), int(month.month), int(spl[1]), int(clock[0]), int(clock[1]), int(clock[2]))
-    if os.path.isfile('last_time.txt'):
-        with open('last_time.txt', 'r') as f:
+    last_bs_read_time = datetime.datetime(int(now.year), int(month.month), int(spl[1]), int(clock[0]), int(clock[1]), int(clock[2]))
+    if os.path.isfile('last_reset.txt'):
+        with open('last_reset.txt', 'r') as f:
             out = f.readlines()
-        now_last = datetime.datetime.strptime(out[0], '%m/%d/%y %H:%M:%S')
+        last_reset = datetime.datetime.strptime(out[0], '%m/%d/%y %H:%M:%S')
         #print("file exists", now_last)
     else:
-    	with open('last_time.txt', 'w') as f:
+    	with open('last_reset.txt', 'w') as f:
     	    f.write(now_time)
 	print("File does not exist. Creating it", now)
-    	now_last = now
+    	last_reset = now
 	
-    diff_1 = (now - last_time).total_seconds()
-    diff_2 = (now - now_last).total_seconds()
+    diff_1 = (now - last_bs_read_time).total_seconds()
+    diff_2 = (now - last_reset).total_seconds()
     
-    print(str(int(diff_1)) + "/3600, " + str(int(diff_2)) + "/86400")
-    if diff_1 > 60*60*1 and diff_2 > 60*60*24:  # if nobody is writing for diff_1 time and the BS was one for one day, then reboot
-	with open('last_time.txt', 'w') as f:
-	    f.write(now_time)
-	sleep(1)
-        print("Nobody wants me. Or maybe I am broken? Reeboting...")
-        subprocess.Popen("sudo reboot", shell=True)
-	
+    print(str(int(diff_1)) + "/3600, " + str(int(diff_2)) + "/14400")
+    if diff_1 > 60*60*1:  # if nobody is reading into the BS for diff_1 time then I put all actions to 0 to avoid node dying
+	action_imposed = 0
+	print("action imposed to 0 since bs in not reading data")
+	if diff_2 > 60*60*4:  # if nobody is writing for diff_1 time and the BS was one for one day, then reboot
+	    with open('last_reset.txt', 'w') as f:
+	        f.write(now_time)
+	    sleep(1)
+            print("Nobody wants me. Or maybe I am broken? Reeboting...")
+            subprocess.Popen("sudo reboot", shell=True)
+    else:
+	action_imposed = -1
+
+    return action_imposed
 	
 print("Let us Start!!")
 
@@ -193,6 +199,7 @@ print("Let us Start!!")
 avoid = []  # in this list there are all the devices that have been read and that needs to be left alone for a bit to avoid to get the data read twice.
 countarell = 0
 count_empty = 0
+action_imposed = -1
 
 while(True):
     #print('here')	
@@ -237,20 +244,12 @@ while(True):
                         Action, Name, File = get_action_name(ID)
                         log_temp = File.split('/')
                         log = log_temp[-1]
-                        #File = 'blupytest.txt'
-                        #print(Action)
-                        #print('sensortag -T -H -B ' + ID + ' -n 1 > ' + Name + ' &')
+                    
                         t = time.strftime('%m/%d/%y %H:%M:%S')
-                        #with open(File, 'a') as f:
-                        #    f.write('\n' + str(t) + '|' + Name + '|||')
-
-                        #print(str(t) + '|' + Name + '|||')
-                        #print('here')
-                        #if Action == '3':
-                            #print('hereh1')
-                            #subprocess.Popen('sensortag -Na ' + log + ' -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
-                        #subprocess.Popen('sensortag -Na ' + log + ' -B ' + ID + ' -n 1 | tee -a ' + File + ' &', shell=True)
-                        #print(Name,ID,File,Action,log)
+			
+			if action_imposed == 0:
+			    Action = '0'
+ 		
                         subprocess.Popen("bash Detector.sh " + Name + " " + ID + " " + File + " " + Action + " " + log + " 2>error.txt &", shell=True)
 
 
@@ -296,7 +295,7 @@ while(True):
     countarell += 1
     if countarell >= 360: # Use 360 as default that is 60*30/5 sec
 	try:
-    	    check_reboot()
+    	    action_imposed = check_reboot()
 	except Exception as e: print("something wrong in check_reboot with error: ", e)
 	
 	countarell = 0
