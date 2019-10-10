@@ -21,7 +21,7 @@ sudo cp /home/pi/BLE_GIT/Base_Station/sensortag.py /usr/local/lib/python2.7/dist
 sudo cp /home/pi/BLE_GIT/Base_Station/blescan.py /usr/local/lib/python2.7/dist-packages/bluepy/blescan.py
 
 # To run screnn
-screen -dmS BLE python bluepy_main.py
+screen -dmS BLE python multipy_main.py
 # To check
 screen -r BLE
 # To detach
